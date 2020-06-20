@@ -22,6 +22,8 @@ try:
 except ImportError:
     from _pytest import python as pytest_fixtures
 
+from _pytest.outcomes import Skipped
+
 from . import exceptions
 from .feature import Feature, force_unicode, get_features
 from .steps import get_caller_module, get_step_fixture_name, inject_fixture
@@ -116,6 +118,9 @@ def _execute_step_function(request, scenario, step, step_func):
         request.config.hook.pytest_bdd_after_step(**kw)
     except Exception as exception:
         request.config.hook.pytest_bdd_step_error(exception=exception, **kw)
+        raise
+    except Skipped as exception:
+        request.config.hook.pytest_bdd_step_skip(exception=exception, **kw)
         raise
 
 
