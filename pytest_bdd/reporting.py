@@ -13,6 +13,7 @@ from .utils import get_parametrize_markers_args
 class StepReport(object):
     """Step excecution report."""
 
+    skipped = False
     failed = False
     stopped = None
 
@@ -35,16 +36,19 @@ class StepReport(object):
             "type": self.step.type,
             "keyword": self.step.keyword,
             "line_number": self.step.line_number,
+            "skipped": self.skipped,
             "failed": self.failed,
             "duration": self.duration,
         }
 
-    def finalize(self, failed):
+    def finalize(self, failed, skipped=False):
         """Stop collecting information and finalize the report.
 
         :param bool failed: Wheither the step excecution is failed.
+        :param bool skipped: Indicates if the step execution is skipped.
         """
         self.stopped = time.time()
+        self.skipped = skipped
         self.failed = failed
 
     @property

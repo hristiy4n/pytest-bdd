@@ -453,6 +453,7 @@ class Scenario(object):
         self.line_number = line_number
         self.example_converters = example_converters
         self.tags = tags or set()
+        self.skipped = False
         self.failed = False
         self.test_function = None
 
@@ -530,6 +531,7 @@ class Step(object):
         self.indent = indent
         self.type = type
         self.line_number = line_number
+        self.skipped = False
         self.failed = False
         self.start = 0
         self.stop = 0
