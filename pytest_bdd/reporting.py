@@ -156,6 +156,17 @@ class ScenarioReport(object):
             report.finalize(failed=True)
             self.add_step_report(report)
 
+    def skip(self):
+        """Stop collecting information and finalize the report as skipped."""
+        self.current_step_report.finalize(failed=False, skipped=True)
+        remaining_steps = self.scenario.steps[len(self.step_reports) :]
+
+        # Skip the rest of the steps and make reports.
+        for step in remaining_steps:
+            report = StepReport(step=step)
+            report.finalize(failed=False, skipped=True)
+            self.add_step_report(report)
+
 
 def runtest_makereport(item, call, rep):
     """Store item in the report object."""
@@ -171,6 +182,11 @@ def runtest_makereport(item, call, rep):
 def before_scenario(request, feature, scenario):
     """Create scenario report for the item."""
     request.node.__scenario_report__ = ScenarioReport(scenario=scenario, node=request.node)
+
+
+def step_skip(request, feature, scenario, step, step_func, step_func_args, exception):
+    """Finalize the step report as skipped."""
+    request.node.__scenario_report__.skip()
 
 
 def step_error(request, feature, scenario, step, step_func, step_func_args, exception):

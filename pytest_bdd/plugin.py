@@ -64,6 +64,11 @@ def pytest_bdd_before_scenario(request, feature, scenario):
 
 
 @pytest.mark.tryfirst
+def pytest_bdd_step_skip(request, feature, scenario, step, step_func, step_func_args, exception):
+    reporting.step_skip(request, feature, scenario, step, step_func, step_func_args, exception)
+
+
+@pytest.mark.tryfirst
 def pytest_bdd_step_error(request, feature, scenario, step, step_func, step_func_args, exception):
     reporting.step_error(request, feature, scenario, step, step_func, step_func_args, exception)
 
