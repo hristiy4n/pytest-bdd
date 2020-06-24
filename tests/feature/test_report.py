@@ -119,6 +119,7 @@ def test_step_trace(testdir):
                 "keyword": "Given",
                 "line_number": 6,
                 "name": u"a passing step",
+                "skipped": False,
                 "type": "given",
             },
             {
@@ -127,6 +128,7 @@ def test_step_trace(testdir):
                 "keyword": "And",
                 "line_number": 7,
                 "name": u"some other passing step",
+                "skipped": False,
                 "type": "given",
             },
         ],
@@ -156,6 +158,7 @@ def test_step_trace(testdir):
                 "keyword": "Given",
                 "line_number": 11,
                 "name": u"a passing step",
+                "skipped": False,
                 "type": "given",
             },
             {
@@ -164,6 +167,7 @@ def test_step_trace(testdir):
                 "keyword": "And",
                 "line_number": 12,
                 "name": u"a failing step",
+                "skipped": False,
                 "type": "given",
             },
         ],
@@ -192,6 +196,7 @@ def test_step_trace(testdir):
                 "keyword": "Given",
                 "line_number": 15,
                 "name": u"there are <start> cucumbers",
+                "skipped": False,
                 "type": "given",
             },
             {
@@ -200,6 +205,7 @@ def test_step_trace(testdir):
                 "keyword": "When",
                 "line_number": 16,
                 "name": u"I eat <eat> cucumbers",
+                "skipped": False,
                 "type": "when",
             },
             {
@@ -208,6 +214,7 @@ def test_step_trace(testdir):
                 "keyword": "Then",
                 "line_number": 17,
                 "name": u"I should have <left> cucumbers",
+                "skipped": False,
                 "type": "then",
             },
         ],
@@ -243,6 +250,7 @@ def test_step_trace(testdir):
                 "keyword": "Given",
                 "line_number": 15,
                 "name": u"there are <start> cucumbers",
+                "skipped": False,
                 "type": "given",
             },
             {
@@ -251,6 +259,7 @@ def test_step_trace(testdir):
                 "keyword": "When",
                 "line_number": 16,
                 "name": u"I eat <eat> cucumbers",
+                "skipped": False,
                 "type": "when",
             },
             {
@@ -259,6 +268,7 @@ def test_step_trace(testdir):
                 "keyword": "Then",
                 "line_number": 17,
                 "name": u"I should have <left> cucumbers",
+                "skipped": False,
                 "type": "then",
             },
         ],
